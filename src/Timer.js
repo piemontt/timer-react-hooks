@@ -26,7 +26,7 @@ export function Timer() {
                 setCount(0);
             }; // Обнуляет значение на странице и в localStorage
 
-            const handleClick = function (event) {
+            const startTimer = function (event) {
                 setTurned(!isTurned)
             }; // Функция, запускающая с кнопки таймер
 
@@ -34,7 +34,7 @@ export function Timer() {
                 <div className="container-fluid mt-5 d-flex justify-content-center align-items-center flex-column">
                     <span className="fs-1">{`${Math.trunc(hour)} hours : ${Math.trunc(minute)} ${minute === 1 ? "minute" : "minutes"} : ${Math.trunc(second)} ${second === 1 ? "second" :"seconds"}`}  left </span>
                             <div className="buttons mt-5 d-flex ">
-                                <button type="button" className={isTurned ? 'btn-danger btn btn-success d-block m-1' : 'btn-success btn btn-success d-block m-1'} onClick={handleClick}>
+                        <button type="button" className={isTurned ? 'btn-danger btn btn-success d-block m-1' : 'btn-success btn btn-success d-block m-1'} onClick={startTimer}>
                                     turn {isTurned ? 'off' : 'on'}
                                 </button>
                                 <button type="button" className="btn btn-secondary d-block m-1" onClick={reset}>
