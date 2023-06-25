@@ -1,22 +1,17 @@
 import React, { useState, useEffect} from 'react';
 
 
-export function ResultList(props) {
- 
-    return (
-        <div className="container mt-5">
-            <div class="alert alert-info" role="alert">
-                it is {props.time}
-            </div>
-        </div>
-        )
-}
 
 export function Timer() {
             const localStorageTime = parseInt(localStorage.getItem("time"));
             const [count, setCount] = useState(localStorageTime || 0);
             const [isTurned, setTurned] = useState(false);
-            
+
+            const [arr, setArr] = useState([]);
+            const result = arr.map((element, index) => {
+                return <div className="alert alert-dark" role="alert" key={index}> <p> {element} </p> </div>;
+            });  // 10-13 строки это добавление элеманта с результатами отсчета
+
             useEffect(() => {
                 if (!isTurned) return;
 
@@ -42,6 +37,7 @@ export function Timer() {
                 setTurned(!isTurned)
             }; // Функция, запускающая таймер
 
+           
             return (
                 <div className="container-fluid mt-5 d-flex justify-content-center align-items-center flex-column">
                     <span className="fs-1">{`${Math.trunc(hour)} hours : ${Math.trunc(minute)} ${minute === 1 ? "minute" : "minutes"} : ${Math.trunc(second)} ${second === 1 ? "second" : "seconds"}`}  left
@@ -53,11 +49,13 @@ export function Timer() {
                         <button type="button" className="btn btn-secondary d-block m-1" onClick={reset}>
                             reset
                         </button>
-                        <button type="button" className="btn btn-info d-block m-1" >
-                            poka tak
+                        <button type="button" className="btn btn-primary d-block m-1" onClick={event => setArr([...arr, `${Math.trunc(hour)} hours : ${Math.trunc(minute)} ${minute === 1 ? "minute" : "minutes"} : ${Math.trunc(second)} ${second === 1 ? "second" : "seconds"}`])}>
+                            compare result
                         </button>
                     </div>
-                    <ResultList time={`${Math.trunc(hour)} hours : ${Math.trunc(minute)} ${minute === 1 ? "minute" : "minutes"} : ${Math.trunc(second)} ${second === 1 ? "second" : "seconds"}`} />
+                    <div className="container mt-5 ml-5">
+                        {result} {/* Список результатов */}
+                    </div>
                 </div>
 
                 )

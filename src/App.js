@@ -4,12 +4,12 @@ import { Header } from './Header.js';
 import { Timer } from './Timer.js';
 
 
+
   function App() {
       return (
       <div className="container-fluid">
           <Header />
               <Timer />
-              
       </div>
   );
 }
