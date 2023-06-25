@@ -1,13 +1,15 @@
+import React from 'react';
 import './App.css';
-import React, { Component } from 'react';
-import { Timer } from './Timer.js';
 import { Header } from './Header.js';
+import { Timer } from './Timer.js';
+
 
   function App() {
       return (
       <div className="container-fluid">
           <Header />
-          <Timer />
+              <Timer />
+              
       </div>
   );
 }
