@@ -1,5 +1,14 @@
 import React, { useState, useEffect} from 'react';
-
+import {
+    OKShareButton,
+    ViberShareButton,
+    WhatsappShareButton,
+} from "react-share";
+import {
+    OKIcon,
+    ViberIcon,
+    WhatsappIcon,
+} from "react-share";
 
 
 export function Timer() {
@@ -9,8 +18,51 @@ export function Timer() {
 
             const [arr, setArr] = useState([]);
             const result = arr.map((element, index) => {
-                return <div className="alert alert-dark" role="alert" key={index}> <p> {element} </p> </div>;
+
+                return <div className="alert alert-dark d-flex flex-row justify-content-between" role="alert" key={index}>
+                            <p className= "mt-1 lh-lg">
+                                        {element}
+                            </p>
+                    
+                            <div name="d-flex flex-row justify-content-between">
+                                <button type="button" className="btn btn-danger  me-4" onClick={() => remove(index)} >
+                                     clear
+                                </button>
+
+                                <OKShareButton
+                                    className="m-1"
+                                    url={'https://www.example.com'}
+                                    quote={element}
+                                    hashtag="#overtake me"
+                                >
+                                    <OKIcon size={31} round />
+                                </OKShareButton>
+
+                                <ViberShareButton
+                                    className="m-1"
+                                    url={'https://www.example.com'}
+                                    quote={element}
+                                    hashtag="#overtake me"
+                                >
+                                    <ViberIcon size={31} round />
+                                </ViberShareButton>
+
+                                <WhatsappShareButton
+                                    className="m-1"
+                                    url={'https://www.example.com'}
+                                    quote={element}
+                                    hashtag="#overtake me"
+                                >
+                                    <WhatsappIcon size={31} round />
+                                    </WhatsappShareButton>
+                            </div>
+
+                        </div>;
             });  // 10-13 строки это добавление элеманта с результатами отсчета
+
+            function remove(index) {
+                setArr([...arr.slice(0, index), ...arr.slice(index + 1)]);
+            }   // функция удаляет элемент из списка 
 
             useEffect(() => {
                 if (!isTurned) return;
