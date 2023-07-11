@@ -3,12 +3,11 @@ import {
     OKShareButton,
     ViberShareButton,
     WhatsappShareButton,
-} from "react-share";
-import {
     OKIcon,
     ViberIcon,
     WhatsappIcon,
 } from "react-share";
+
 
 
 export function Timer() {
@@ -58,7 +57,7 @@ export function Timer() {
                             </div>
 
                         </div>;
-            });  // 10-13 строки это добавление элеманта с результатами отсчета
+            });  // 19-60 строки это добавление элеманта с результатами отсчета
 
             function remove(index) {
                 setArr([...arr.slice(0, index), ...arr.slice(index + 1)]);

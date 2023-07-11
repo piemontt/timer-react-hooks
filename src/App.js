@@ -9,7 +9,7 @@ import { Timer } from './Timer.js';
       return (
       <div className="container-fluid">
           <Header />
-              <Timer />
+          <Timer />
       </div>
   );
 }
